@@ -16,10 +16,7 @@ async function deleteProduct(id, product) {
       alert("Produto excluído com sucesso!")
       const productsResponse = await fetch("/components/products.php")
       const productsText = await productsResponse.text()
-      const container = document.createElement("div")
-      container.innerHTML = productsText
-      const productsNode = container.firstElementChild
-      document.getElementById("products").replaceWith(productsNode)
+      document.getElementById("main-container").innerHTML = productsText
     } else {
       throw new Error((await response.json()).message)
     }

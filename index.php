@@ -19,8 +19,10 @@
       </nav>
     </header>
     <main class="text-white flex-grow-1 p-4 bg-primary">
-      <h1 class="fw-light">Estoque</h1>  
-      <?php require_once __DIR__ . '/components/products.php';?>
+      <h1 class="fw-light">Estoque</h1>
+      <div id="main-container" class="m-0 mt-3">
+        <?php require_once __DIR__ . '/components/products.php';?>
+      </div>
     </main>
     <footer
       class="bg-primary text-white d-flex justify-content-between align-items-center p-4">

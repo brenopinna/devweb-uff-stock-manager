@@ -1,6 +1,6 @@
 <?php
   require_once __DIR__ . '/../data/get_cards_info.php';
-  require_once __DIR__ . '/card.php';
+  require_once __DIR__ . '/../components/card.php';
   $cards_info = get_cards_info();
 ?>
 <?php if($cards_info): ?>
@@ -10,7 +10,7 @@
     <?= card('Produtos Recentes', $cards_info['recent_products'])  ?>
     <?= card('Produtos Acabando', $cards_info['low_stock_count'])  ?>
   </div>
-  <?php require_once 'table.php'; ?>
+  <?php require_once __DIR__ . '/../components/table.php'; ?>
 <?php else: ?>
   <p class="p-0 text-start">Nenhum produto encontrado</p>
 <?php endif; ?>

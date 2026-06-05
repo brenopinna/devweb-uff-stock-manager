@@ -4,7 +4,7 @@ async function deleteProduct(id, product) {
   }
 
   try {
-    const response = await fetch("delete.php", {
+    const response = await fetch("data/delete.php", {
       method: "POST",
       headers: {
         // esse content-type é necessário para o PHP reconhecer os dados enviados no corpo da requisição
@@ -14,7 +14,7 @@ async function deleteProduct(id, product) {
     })
     if (response.ok) {
       alert("Produto excluído com sucesso!")
-      const productsResponse = await fetch("/components/products.php")
+      const productsResponse = await fetch("/pages/products.php")
       const productsText = await productsResponse.text()
       document.getElementById("main-container").innerHTML = productsText
     } else {

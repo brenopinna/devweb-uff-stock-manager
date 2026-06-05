@@ -1,0 +1,16 @@
+:root {
+  --overwrite-primary-color: #2c2c2d;
+  --overwrite-secondary-color: #1c1a1d;
+}
+
+.bg-primary {
+  background-color: var(--overwrite-primary-color) !important;
+}
+
+.bg-secondary {
+  background-color: var(--overwrite-secondary-color) !important;
+}
+
+.table-dark {
+  --bs-table-bg: var(--primary-color) !important;
+}

@@ -1,10 +1,3 @@
-<?php
-    require_once 'data/get_cards_info.php';
-    require_once 'components/card.php';
-    require_once 'components/table.php';
-    $cards_info = get_cards_info();
-?>
-
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -26,18 +19,8 @@
       </nav>
     </header>
     <main class="text-white flex-grow-1 p-4 bg-primary">
-      <h1 class="fw-light">Estoque</h1>
-      <?php if($cards_info): ?>
-            <div class="row gap-4 m-0 mt-3">
-            <?= card('Diversidade de Produtos', $cards_info['diversity'])  ?>
-            <?= card('Inventário Total', $cards_info['total_inventory'])  ?>
-            <?= card('Produtos Recentes', $cards_info['recent_products'])  ?>
-            <?= card('Produtos Acabando', $cards_info['low_stock_count'])  ?>
-            <?= table() ?>
-            </div>
-      <?php else: ?>
-          <p class="p-0 m-0 mt-3 text-start">Nenhum produto encontrado</p>
-      <?php endif;?>
+      <h1 class="fw-light">Estoque</h1>  
+      <?php require_once __DIR__ . '/components/products.php';?>
     </main>
     <footer
       class="bg-primary text-white d-flex justify-content-between align-items-center p-4">

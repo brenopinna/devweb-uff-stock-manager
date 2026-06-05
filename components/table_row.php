@@ -17,19 +17,9 @@
             <a href="#" class="me-2 btn btn-md btn-primary">
                 Editar
             </a>
-
-            <form
-                method="POST"
-                action="delete.php"
-                class="d-inline"
-                onsubmit="return confirm('Tem certeza que deseja excluir ({$id}) {$product}?');"
-            >
-                <input type="hidden" name="id" value="$id">
-
-                <button type="submit" class="btn btn-md btn-danger">
-                    Excluir
-                </button>
-            </form>
+            <button onclick="deleteProduct({$id}, '{$product}')" class="btn btn-md btn-danger">
+                Excluir
+            </button>
         </td>
       </tr>
 HTML;

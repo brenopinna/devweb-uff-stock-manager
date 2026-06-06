@@ -11,6 +11,7 @@
     $sql = "DELETE FROM products WHERE id = :id";
     $stmt = $con->prepare($sql);
     $stmt->execute([':id' => $id]);
+    http_response_code(204);
   } catch (\Throwable $th) {
     http_response_code(500);
     echo json_encode(['message' => 'Ocorreu um erro ao excluir o produto.']);

@@ -9,7 +9,7 @@
         >👾</span
       >
     </footer>
-    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="index.js"></script>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/index.js"></script>
   </body>
 </html>

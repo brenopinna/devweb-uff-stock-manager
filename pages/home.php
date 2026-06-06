@@ -4,7 +4,7 @@
   $cards_info = get_cards_info();
 ?>
 <?php if($cards_info): ?>
-  <div class="row gap-4">
+  <div class="row gap-4 g-0">
     <?= card('Diversidade de Produtos', $cards_info['diversity'])  ?>
     <?= card('Inventário Total', $cards_info['total_inventory'])  ?>
     <?= card('Produtos Recentes', $cards_info['recent_products'])  ?>

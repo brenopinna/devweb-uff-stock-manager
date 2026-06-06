@@ -4,7 +4,8 @@ async function deleteProduct(id, product) {
   }
 
   try {
-    const response = await fetch("data/delete.php", {
+    const requestUrl = location.href
+    const response = await fetch("/data/delete.php", {
       method: "POST",
       headers: {
         // esse content-type é necessário para o PHP reconhecer os dados enviados no corpo da requisição
@@ -14,9 +15,19 @@ async function deleteProduct(id, product) {
     })
     if (response.ok) {
       alert("Produto excluído com sucesso!")
-      const productsResponse = await fetch("/pages/home.php")
-      const productsText = await productsResponse.text()
-      document.getElementById("main-container").innerHTML = productsText
+      // essa parte serve pra verificar qual a pagina na qual o delete foi solicitado,
+      // para que o script verifique pra onde deve (ou nao) direcionar o usuario.
+      const filteredRequestUrl = requestUrl.split("?").slice(0, -1).join("") || requestUrl
+      const pathList = filteredRequestUrl.split("/").filter((slug) => slug)
+      const endpoint = pathList.at(-1)
+      if (endpoint === "details") {
+        location.href = "/" // redireciona se tiver vindo dos detalhes
+      } else {
+        // nao precisa re-renderizar qnd apaga na pagina details
+        const productsResponse = await fetch("/pages/home.php")
+        const productsText = await productsResponse.text()
+        document.getElementById("main-container").innerHTML = productsText
+      }
     } else {
       throw new Error((await response.json()).message)
     }

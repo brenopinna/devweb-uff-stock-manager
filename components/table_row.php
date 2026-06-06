@@ -1,7 +1,13 @@
 <?php
   function table_row(string $product, int $id, int $quantity, string $category) {
+      require_once __DIR__ . '/btn_details.php';
+      require_once __DIR__ . '/btn_update.php';
+      require_once __DIR__ . '/btn_delete.php';
       $product = htmlspecialchars($product);
       $category = htmlspecialchars($category);
+      $btn_details = btn_details($id);
+      $btn_update = btn_update($id);
+      $btn_delete = btn_delete($id, $product);
 
       return <<<HTML
       <tr class="align-middle">
@@ -10,16 +16,9 @@
         <td>{$quantity}</td>
         <td>{$category}</td>
         <td class="w-25">
-            <a href="#" class="me-2 btn btn-md btn-light">
-                Ver
-            </a>
-
-            <a href="#" class="me-2 btn btn-md btn-primary">
-                Editar
-            </a>
-            <button onclick="deleteProduct({$id}, '{$product}')" class="btn btn-md btn-danger">
-                Excluir
-            </button>
+            {$btn_details}
+            {$btn_update}
+            {$btn_delete}
         </td>
       </tr>
 HTML;

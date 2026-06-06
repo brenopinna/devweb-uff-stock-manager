@@ -25,6 +25,14 @@
     tag("Em estoque: " . $quantity)
   ];
 ?>
+
+<?php if(isset($_GET['success'])): ?>
+  <div class="position-absolute my-4 w-50 top-0 start-50 translate-middle-x alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Produto editado com sucesso!</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<?php endif; ?>
+
 <div class="d-flex align-items-center">
   <h2 class="fw-light me-5"><?= $product['name'] ?></h2>
   <?= $btn_update ?>

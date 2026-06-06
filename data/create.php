@@ -31,6 +31,6 @@
     exit();
   } catch (\Throwable $th) {
     http_response_code(500);
-    echo json_encode(['message' => 'Ocorreu um erro ao excluir o produto.']);
+    echo json_encode(['message' => 'Ocorreu um erro ao criar o produto.']);
     exit();
   }

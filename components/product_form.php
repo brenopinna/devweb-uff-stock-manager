@@ -17,8 +17,8 @@
       FormMode::EDIT => ['update', "Editar"],
     };
 
-    $form_id = FormMode::CREATE ? "create-product" : "";
-    $form_action = FormMode::EDIT ? "/data/{$path}.php" : "";
+    $form_id = $mode == FormMode::CREATE ? "create-product" : "";
+    $form_action = $mode == FormMode::EDIT ? "/data/{$path}.php" : "";
     $input_hidden = $mode == FormMode::EDIT ? "<input type='hidden' name='id' value={$id}>" : "";
 
     return <<<HTML

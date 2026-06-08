@@ -1,6 +1,7 @@
 <?php require_once __DIR__ . '/../components/header.php' ?>
-  <h1 class="fw-light container">Adicionar Produtos</h1>
-  <div id="main-container" class="m-0 mt-3">
-    <?php require_once __DIR__ . '/../pages/new.php';?>
+<?php require_once __DIR__ . '/../components/product_form.php' ?>
+  <h1 class="fw-light">Adicionar Produtos</h1>
+  <div class="my-0 mt-3">
+    <?= product_form(FormMode::CREATE) ?>
   </div>
 <?php require_once __DIR__ . '/../components/footer.php' ?>

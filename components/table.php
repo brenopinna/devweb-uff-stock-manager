@@ -5,7 +5,7 @@
   $products = $table_info ? $table_info : [];
 ?>
 <?php if(count($products) > 0): ?>
-  <div>
+  <div class="table-responsive-lg">
     <table class="table table-dark table-borderless table-hover mt-4">
       <thead class="bg-secondary shadow">
         <tr class="align-middle">

@@ -33,12 +33,14 @@
   </div>
 <?php endif; ?>
 
-<div class="d-flex align-items-center">
-  <h2 class="fw-light me-5"><?= $product['name'] ?></h2>
-  <?= $btn_update ?>
-  <?= $btn_delete ?>
+<div class="d-flex align-items-center flex-wrap column-gap-5">
+  <h2 class="fw-light"><?= $product['name'] ?></h2>
+  <div class="d-flex gap-3">
+    <?= $btn_update ?>
+    <?= $btn_delete ?>
+  </div>
 </div>
-<div class="d-flex gap-4 mt-4">
+<div class="d-flex gap-4 mt-4 flex-wrap">
   <?php foreach ($tags as $tag): ?>
     <?= $tag ?>
   <?php endforeach; ?>

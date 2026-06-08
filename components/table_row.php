@@ -16,9 +16,11 @@
         <td>{$quantity}</td>
         <td>{$category}</td>
         <td class="w-25">
+          <div class="d-flex align-items-center flex-nowrap gap-3">
             {$btn_details}
             {$btn_update}
             {$btn_delete}
+          </div>
         </td>
       </tr>
 HTML;

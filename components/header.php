@@ -7,16 +7,23 @@
     <link rel="stylesheet" href="/theme.css" />
     <title>Stock Manager</title>
   </head>
-<body class="d-flex flex-column min-vh-100">
-  <header class="bg-primary">
-    <div class="bg-primary text-white d-flex justify-content-between align-items-center py-4 px-3 container">
-      <p class="text-uppercase mb-0 fw-bold">
-        <a href="/" class="text-white text-decoration-none">Stock Manager</a>
-      </p>
-      <nav class="d-flex gap-4 align-items-center">
-        <a href="/" class="link-light link-underline-opacity-0 link-opacity-75-hover">Início</a>
-        <a href="/new" class="link-light link-underline-opacity-0 link-opacity-75-hover">Adicionar Produtos</a>
-      </nav>
-    </div>
+<body class="d-flex flex-column min-vh-100 bg-primary container">
+  <header class="bg-primary text-white px-4 py-3">
+    <nav class="d-flex justify-content-between align-items-center navbar navbar-expand-sm">
+      <a class="text-white text-decoration-none text-uppercase mb-0 fw-bold" href="/">Stock Manager</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="/" class="nav-link">Início</a>
+          </li>
+          <li class="nav-item">
+            <a href="/new" class="nav-link">Adicionar Produtos</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </header>
   <main class="text-white flex-grow-1 p-4 bg-primary">

@@ -41,7 +41,10 @@ SELECT
   ) AS low_stock_count
 FROM products;
 
-/* Atualizando um dado*/
-UPDATE products
-SET products.quantity = 10 
-WHERE id=2;
+/* Busca as infos da tabela */
+SELECT
+  products.id,
+  products.name,
+  products.quantity,
+  products.category
+FROM products;

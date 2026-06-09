@@ -11,7 +11,7 @@
         >
       </div>
     </footer>
-    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/index.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/index.js"></script>
   </body>
 </html>

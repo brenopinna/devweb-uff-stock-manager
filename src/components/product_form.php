@@ -18,7 +18,7 @@
     };
 
     $form_id = $mode == FormMode::CREATE ? "create-product" : "";
-    $form_action = $mode == FormMode::UPDATE ? "/data/{$path}.php" : "";
+    $form_action = $mode == FormMode::UPDATE ? "/src/data/{$path}.php" : "";
     $input_hidden = $mode == FormMode::UPDATE ? "<input type='hidden' name='id' value={$id}>" : "";
 
     return <<<HTML

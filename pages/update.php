@@ -17,4 +17,4 @@
   </div>
 <?php endif; ?>
 
-<?= product_form(FormMode::EDIT, $product) ?>
+<?= product_form(FormMode::UPDATE, $product) ?>

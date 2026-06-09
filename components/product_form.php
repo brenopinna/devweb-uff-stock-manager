@@ -1,7 +1,7 @@
 <?php
   enum FormMode: int {
     case CREATE = 0;
-    case EDIT = 1;
+    case UPDATE = 1;
   }
 
   function product_form(FormMode $mode, array $product = []){
@@ -14,12 +14,12 @@
 
     [$path, $button_text] = match($mode) {
       FormMode::CREATE => ['create', "Salvar"],
-      FormMode::EDIT => ['update', "Editar"],
+      FormMode::UPDATE => ['update', "Atualizar"],
     };
 
     $form_id = $mode == FormMode::CREATE ? "create-product" : "";
-    $form_action = $mode == FormMode::EDIT ? "/data/{$path}.php" : "";
-    $input_hidden = $mode == FormMode::EDIT ? "<input type='hidden' name='id' value={$id}>" : "";
+    $form_action = $mode == FormMode::UPDATE ? "/data/{$path}.php" : "";
+    $input_hidden = $mode == FormMode::UPDATE ? "<input type='hidden' name='id' value={$id}>" : "";
 
     return <<<HTML
     <div class="gy-4">

@@ -24,7 +24,7 @@ async function deleteProduct(id, product) {
         location.href = "/" // redireciona se tiver vindo dos detalhes
       } else {
         // nao precisa re-renderizar qnd apaga na pagina details
-        const productsResponse = await fetch("/pages/home.php")
+        const productsResponse = await fetch("/src/pages/home.php")
         const productsText = await productsResponse.text()
         document.getElementById("main-container").innerHTML = productsText
       }

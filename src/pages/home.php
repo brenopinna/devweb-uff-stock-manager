@@ -12,5 +12,5 @@
   </div>
   <?php require_once __DIR__ . '/../components/table.php'; ?>
 <?php else: ?>
-  <p class="p-0 text-start">Nenhum produto encontrado</p>
+  <p class="p-0 text-start">Nenhum produto encontrado. Para adicionar produtos e iniciar o gerenciamento do seu estoque, <a href="/new" class="link-light">clique aqui</a>.</p>
 <?php endif; ?>

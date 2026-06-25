@@ -9,8 +9,8 @@
         ":id" => $id
       ]);
       $product_details = $stmt->fetch(PDO::FETCH_ASSOC);
-      return $product_details;
+      return ['success' => true, 'data' => $product_details];
     } catch (\Throwable $th) {
-      return null;
+      return ['success' => false, 'message' => $th->getMessage()];
     }
   }

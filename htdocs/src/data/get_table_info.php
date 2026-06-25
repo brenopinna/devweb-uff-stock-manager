@@ -7,8 +7,8 @@
       $stmt = $con->prepare($sql);
       $stmt->execute();
       $table_info = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      return $table_info;
+      return ['success' => true, 'data' => $table_info];
     } catch (\Throwable $th) {
-      return null;
+      return ['success' => false, 'message' => $th->getMessage()];
     }
   }

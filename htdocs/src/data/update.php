@@ -39,6 +39,6 @@
     header("location: /details?id=" . $id . "&success");
     exit();
   } catch (\Throwable $th) {
-      header("location: /update?id=" . $id . "&error");
-      exit();
+    header("location: /update?id=" . $id . "&error");
+    exit();
   }

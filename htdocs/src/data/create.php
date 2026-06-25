@@ -23,14 +23,14 @@
       ':price' => $price,
       ':description' => $description
     ]);
-    if($stmt->rowCount()>0) { // isso retorna quantas linhas foram afetadas pela query.
-      echo json_encode(['message' => 'O produto foi criado com sucesso.']);
-    } else {
-      throw new Error();
-    }
+    echo json_encode(['success'=> true, 'message' => 'O produto foi criado com sucesso.']);
     exit();
-  } catch (\Throwable $th) {
+  } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(['message' => 'Ocorreu um erro ao criar o produto.']);
+    echo json_encode(['success' => false, 'message' => 'Falha ao conectar ao banco de dados.']);
+    exit();
+  } catch (Throwable $th) {
+    http_response_code(500);
+    echo json_encode(['success'=> false, 'message' => $th->getMessage() ?: 'Ocorreu um erro ao criar o produto.']);
     exit();
   }

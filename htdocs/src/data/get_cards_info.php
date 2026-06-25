@@ -14,8 +14,8 @@
       $stmt = $con->prepare($sql);
       $stmt->execute();
       $cards_info = $stmt->fetch(PDO::FETCH_ASSOC);
-      return $cards_info;
+      return ['success' => true, 'data' => $cards_info];
     } catch (\Throwable $th) {
-      return null;
+      return ['success' => false, 'message' => $th->getMessage()];
     }
   }

@@ -1,7 +1,7 @@
 <?php
   require_once __DIR__ . '/../data/get_table_info.php'; 
   require_once __DIR__ . '/table_row.php';  
-  $table_info = get_table_info();
+  $table_info = get_table_info()['data'];
   $products = $table_info ? $table_info : [];
 ?>
 <?php if(count($products) > 0): ?>

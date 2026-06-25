@@ -3,11 +3,8 @@
   require_once __DIR__ . '/../components/product_form.php';
 
   $id = $_GET['id'];
-  $product = get_product_details($id);
-
-  $product['name'] = htmlspecialchars($product['name']);
-  $product['category'] = htmlspecialchars($product['category']);
-  $product['description'] = htmlspecialchars($product['description']);
+  $data = get_product_details($id);
+  $product = $data['data'] ?? [];
 ?>
 
 <?php if(isset($_GET['error'])): ?>
@@ -17,4 +14,13 @@
   </div>
 <?php endif; ?>
 
-<?= product_form(FormMode::UPDATE, $product) ?>
+<?php if(!$data['success']): ?>
+  <p class="p-0 text-start">Houve um erro no servidor. Recarregue a página e tente novamente.</p>
+<?php elseif($product): ?>
+  <?php
+    $product['name'] = htmlspecialchars($product['name']);
+    $product['category'] = htmlspecialchars($product['category']);
+    $product['description'] = htmlspecialchars($product['description']);
+  ?>
+  <?= product_form(FormMode::UPDATE, $product) ?>
+<?php endif; ?>

@@ -1,9 +1,13 @@
 <?php
   require_once __DIR__ . '/../data/get_cards_info.php';
   require_once __DIR__ . '/../components/card.php';
-  $cards_info = get_cards_info();
+  $data = get_cards_info();
+  $cards_info = $data['data'] ?? [];
 ?>
-<?php if($cards_info): ?>
+
+<?php if(!$data['success']): ?>
+  <p class="p-0 text-start">Houve um erro no servidor. Recarregue a página e tente novamente.</p>
+<?php elseif($cards_info): ?>
   <div class="row gap-4 g-0">
     <?= card('Diversidade de Produtos', $cards_info['diversity'])  ?>
     <?= card('Inventário Total', $cards_info['total_inventory'])  ?>

@@ -12,8 +12,13 @@
     $stmt = $con->prepare($sql);
     $stmt->execute([':id' => $id]);
     http_response_code(204);
+    exit();
+  } catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'Falha ao conectar ao banco de dados.']);
+    exit();
   } catch (\Throwable $th) {
     http_response_code(500);
-    echo json_encode(['message' => 'Ocorreu um erro ao excluir o produto.']);
+    echo json_encode(['success'=> false, 'message' => $th->getMessage() ?: 'Ocorreu um erro ao excluir o produto.']);
     exit();
   }

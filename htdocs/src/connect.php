@@ -5,7 +5,7 @@
       $psw = 'breno10082006';
       $dbname = 'if0_42263515_stock';
 
-      $conexao = new PDO("mysql:host=$host;dbname=$dbname", $user, $psw);
+      $conexao = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $user, $psw);
       //Configurar o pdo para lançar exceções sempre que houver um erro 
       $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       return $conexao;

@@ -1,5 +1,5 @@
 <?php
-  require_once __DIR__ . '/../connect.php';  
+  require_once __DIR__ . '/../src/connect.php';
   if($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     header('location: /');

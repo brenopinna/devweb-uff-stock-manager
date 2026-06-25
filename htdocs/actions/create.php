@@ -1,5 +1,5 @@
 <?php
-  require_once __DIR__ . '/../connect.php';  
+  require_once __DIR__ . '/../src/connect.php';  
   if($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     header('location: /');
@@ -23,7 +23,11 @@
       ':price' => $price,
       ':description' => $description
     ]);
-    echo json_encode(['success'=> true, 'message' => 'O produto foi criado com sucesso.']);
+    if($stmt->rowCount() > 0) {
+      echo json_encode(['success'=> true, 'message' => 'O produto foi criado com sucesso.']);
+    } else {
+      throw new Error();
+    }
     exit();
   } catch (PDOException $e) {
     http_response_code(500);

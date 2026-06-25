@@ -5,7 +5,7 @@ async function deleteProduct(id, product) {
 
   try {
     const requestUrl = location.href
-    const response = await fetch("/src/data/delete.php", {
+    const response = await fetch("/actions/delete.php", {
       method: "POST",
       headers: {
         // esse content-type é necessário para o PHP reconhecer os dados enviados no corpo da requisição
@@ -43,7 +43,7 @@ async function createProduct(e) {
   const formData = new FormData(e.target)
 
   try {
-    const response = await fetch("/src/data/create.php", {
+    const response = await fetch("/actions/create.php", {
       method: "POST",
       // removi o content-type multipart/form-data pq o navegador por padrao coloca umas
       // informacoes no header de content-type mas se eu escrevo manualmente nao funciona.

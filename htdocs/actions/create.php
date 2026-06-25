@@ -23,11 +23,7 @@
       ':price' => $price,
       ':description' => $description
     ]);
-    if($stmt->rowCount() > 0) {
-      echo json_encode(['success'=> true, 'message' => 'O produto foi criado com sucesso.']);
-    } else {
-      throw new Error();
-    }
+    echo json_encode(['success'=> true, 'message' => 'O produto foi criado com sucesso.']);
     exit();
   } catch (PDOException $e) {
     http_response_code(500);

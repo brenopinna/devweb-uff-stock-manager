@@ -75,4 +75,4 @@ Edição de produto (Acessada pelo botão `Editar`)
 
 Obrigado por apoiar meu projeto! Desenvolvido por **Breno Pinna**.
 
-Qualquer sugestão ou dúvida, mande um oi no discord! username: **b011**
+Qualquer sugestão ou dúvida, mande um oi no discord! username: **\_b011**

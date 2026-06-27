@@ -1,78 +1,89 @@
 # Stock Manager 📦
 
-## 🔍 Sobre o projeto
+## Objetivo
 
-O **STOCK MANAGER** foi concebido para resolver o problema de descentralização e falta de controle sobre mercadorias armazenadas.
+O `Stock Manager` é uma aplicação simples para acompanhar e controlar o estoque de produtos. Ele ajuda a registrar novos itens, ver os detalhes de cada produto, atualizar informações e remover registros quando necessário.
 
-Esta documentação detalha as regras de negócio, fluxos de usuário e comportamentos operacionais do sistema. O foco principal é descrever as utilidades de cada tela e como elas se conectam para formar o ciclo de vida completo de gerenciamento de um inventário (CRUD).
+A ideia é tornar o controle de inventário mais direto e visual, com métricas chave sempre visíveis na tela principal.
 
-## 🛠️ Tecnologias utilizadas
+## Tecnologias utilizadas
 
-Frontend 👾
-
-- HTML & CSS
+- HTML
+- CSS
 - JavaScript
 - Bootstrap
-
-Backend 👨‍💻
-
 - PHP
 - MySQL
+- InfinityFree (Hospedagem)
 
-Hospedagem 🌐
+## Visão geral do fluxo da aplicação
 
-- InfinityFree
+1. **Tela inicial (Home)**
+   - Exibe métricas do estoque: diversidade de produtos (número de itens diferentes em estoque), quantidade total em estoque, produtos recentes (cadastrados nos últimos sete dias) e produtos acabando (com menos de 5 unidades).
+   - Se não houver produtos cadastrados, exibe uma mensagem amigável e um link para adicionar o primeiro produto.
+   - Quando há produtos, mostra uma tabela com ações para ver detalhes, editar ou excluir.
 
-## 📗 Guia do projeto
+2. **Cadastro de produto**
+   - A rota `/new` abre um formulário com campos de nome, quantidade, preço, categoria e descrição.
+   - O envio do formulário cria um novo registro no banco e atualiza a visualização do estoque.
 
-### Regras de Negócio
+3. **Detalhes do produto**
+   - A rota `/details` exibe as informações completas de um produto selecionado.
+   - Além do nome e descrição, mostra categoria, valor unitário, quantidade em estoque e data da última modificação.
+   - A partir desta tela, o usuário pode ir para edição ou excluir o item.
 
-Antes de navegar pelas telas, é importante entender os pilares lógicos da aplicação:
+4. **Edição de produto**
+   - A rota `/update` carrega os dados atuais do produto em um formulário.
+   - Após alterar os campos, o sistema atualiza o registro no banco e redireciona para a tela de detalhes.
 
-1. **Recálculo em Cadeia:** Qualquer inserção, deleção ou atualização gera um recálculo instantâneo das quatro métricas do topo da página principal.
-2. **Ciclo de Vida de Deleção:** A ação de "Excluir" a partir de qualquer uma das telas remove o registro da persistência de dados. Caso o item excluído seja o último da base de dados, a aplicação automaticamente altera seu estado de renderização e retorna para a visualização de tela vazia.
+5. **Exclusão**
+   - O botão de excluir remove o produto do banco de dados.
+   - Se o estoque ficar vazio, a aplicação volta à tela inicial com o convite para cadastrar um novo produto.
 
-### Funcionalidades
+## Estrutura principal do projeto
 
-O sistema foi desenhado para guiar o usuário por todas as etapas do gerenciamento de estoque:
+- `htdocs/`
+  - Arquivos públicos do sistema.
+  - `index.php` é a página principal.
+  - `actions/` contém os scripts para criar, atualizar e excluir produtos.
+  - `src/` tem a lógica de conexão, componentes e páginas internas.
 
-#### Tela Principal (Vazia)
+- `assets/`
+  - Arquivos de estilo e scripts.
+  - Inclui Bootstrap e CSS personalizado.
 
-Na etapa inicial, quando o banco de dados está limpo (sem produtos), o sistema atua na **prevenção de quebra de fluxo**. Em vez de exibir uma tabela vazia, instrui ativamente o operador e o direciona através de um link para o cadastro.
+## Telas e comportamento
+
+### Tela principal vazia
+
+Quando não há produtos, a página principal não mostra apenas uma tabela vazia. Ela orienta o usuário a começar o cadastro com um link claro.
 
 ![Tela principal vazia](./assets/home.png)
-Tela principal vazia
 
-#### Painel de Monitoramento (Home)
+### Painel de monitoramento
 
-Assim que o banco possui pelo menos um item, a **central de monitoramento** é carregada. Ela é dividida em indicadores automáticos (Diversidade, Inventário Total, Produtos Recentes e Produtos Acabando) e na listagem estruturada, que oferece rotas para `Ver`, `Editar` ou `Excluir`.
+Com produtos cadastrados, o usuário vê indicadores e a lista completa de itens, permitindo ações de ver, editar ou excluir.
 
-![Tela principal cheia](./assets/home-cheia.png)
-Painel de monitoramento e listagem de produtos
+![Painel de monitoramento](./assets/home-cheia.png)
 
-#### Cadastro de Produtos
+### Cadastro de produto
 
-A interface de **Cadastro** atua como validadora de entrada de dados (Nome, Quantidade, Preço, Categoria e Descrição). A submissão processa os dados no banco e atualiza instantaneamente os indicadores da Home.
+O formulário de cadastro valida as informações básicas e permite inserir novos produtos de maneira rápida.
 
 ![Tela de cadastro de produto](./assets/adicionar.png)
-Criação de um novo produto
 
-#### Detalhes do Produto
+### Detalhes do produto
 
-Para conferência individual e auditoria, a tela de **Detalhes** exibe o registro de marcas de tempo (_timestamps_) com a data e hora da última alteração. Também oferece um ambiente seguro para ações modificadoras.
+A visualização de detalhes oferece um panorama completo do produto e permite confirmar as informações antes de editar ou excluir.
 
 ![Tela de detalhes de produto](./assets/detalhes.png)
-Visualização de produto específico (Acessada pelo botão `Ver`)
 
-#### Atualização de Produto
+### Atualização de produto
 
-Para mitigar erros humanos, a interface de **Atualização** faz uma consulta ao banco e pré-carrega os campos com o estado atual do objeto. Ao atualizar, o motor PHP renova automaticamente o _timestamp_ de modificação.
+A edição pré-carrega os valores atuais e facilita a correção de dados sem precisar começar do zero.
 
 ![Tela de atualização de produto](./assets/editar.png)
-Edição de produto (Acessada pelo botão `Editar`)
 
-## Agradecimentos
+## Conclusão
 
-Obrigado por apoiar meu projeto! Desenvolvido por **Breno Pinna**.
-
-Qualquer sugestão ou dúvida, mande um oi no discord! username: **\_b011**
+O `Stock Manager` foi pensado para ser uma ferramenta leve de controle de estoque. Ele guia o usuário desde o primeiro cadastro até o gerenciamento diário, mantendo um fluxo simples e direto. Além disso, foi pensado com uma arquitetura modularizada e altamente desacoplada, permitindo futuras modificações no sistema de forma fácil e que reflitam em toda a aplicação.
